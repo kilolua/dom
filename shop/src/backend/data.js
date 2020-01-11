@@ -24,7 +24,7 @@ export function getCards(callback) {
 
 export function addCard(data, callback) {
     // console.log('add task')
-    console.log('data', data)
+    //console.log('data', data)
     fetch('/api/add_card', {
         body: JSON.stringify(data),
         method: 'POST',

@@ -15,10 +15,12 @@ export default class CardItem extends React.Component{
                 <Card style={{ width: '100%' }}>
                     <Card.Img style={{ width: '50px' }} variant="top" src="https://ducandiets.ru/wp-content/uploads/2017/11/Postnye-kotlety-iz-govyazhego-myasa.jpg" />
                     <Card.Body>
-                        <Card.Title>{this.state.data.name}</Card.Title>
+                        <Card.Title>{this.state.data.title}</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            <p>Имя:{this.state.data.name}</p>
+                            <p>Адресс:{this.state.data.address}</p>
+                            <p>Тип:{this.state.data.tag}</p>
+                            <p>Цена:{this.state.data.price}</p>
                         </Card.Text>
                         <Button variant="primary">Go somewhere</Button>
                     </Card.Body>

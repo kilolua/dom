@@ -8,11 +8,15 @@ class AddCard extends React.Component {
         super(props)
         this.state = {
             name:'',
+            price:'',
+            tag:'',
+            address:'',
+            title:'',
         }
     }
 
     onSubmit(){
-        let data = _.pick(this.state, 'name')
+        let data = _.pick(this.state, 'name', 'price', 'tag', 'address', 'title')
         let errors = {}
         if (JSON.stringify(errors) === '{}'){
             addCard(data, (res, error)=>{
@@ -39,7 +43,11 @@ class AddCard extends React.Component {
                     <Form>
                         <Form.Group controlId="Title">
                             <Form.Label>Название</Form.Label>
-                            <Form.Control type="text" value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})}/>
+                            <Form.Control placeholder="Заголовок" type="text" value={this.state.title} onChange={(e)=>this.setState({title:e.target.value})}/>
+                            <Form.Control placeholder="Имя" type="text" value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})}/>
+                            <Form.Control placeholder="Цена" type="text" value={this.state.price} onChange={(e)=>this.setState({price:e.target.value})}/>
+                            <Form.Control placeholder="Тип" type="text" value={this.state.tag} onChange={(e)=>this.setState({tag:e.target.value})}/>
+                            <Form.Control placeholder="Адресс" type="text" value={this.state.address} onChange={(e)=>this.setState({address:e.target.value})}/>
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
