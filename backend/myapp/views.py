@@ -18,6 +18,10 @@ def process(request):
 @csrf_exempt
 def add_card(request):
     data = json.loads(request.body)
-    c = Cards(name=data['name'])
+    c = Cards(name=data['name'],
+              title=data['title'],
+              tag=data['tag'],
+              price=data['price'],
+              address=data['address'])
     c.save()
     return JsonResponse({'status': 'ok', 'data': None})
