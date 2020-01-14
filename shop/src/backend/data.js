@@ -13,11 +13,10 @@ export function getCards(callback) {
     // console.log('get profile')
     let promise = fetch('/api/cards')
     promise.then(resp=>{
-            //console.log(resp)
             return resp.json()
         }).then(res=>{
-            //console.log('res', res.data)
-            callback(res.data)
+            //console.log('res', res)
+            callback(res)
     })
     //console.log(promise);
 }

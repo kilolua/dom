@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from rest_framework.generics import CreateAPIView, ListAPIView
 from django.http import HttpResponse, JsonResponse
 import json
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from django.views import View
 from .models import Cards
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+from .serializers import CardSerializer
+
+class CardsViews(CreateAPIView, ListAPIView):
+    queryset = Cards.objects.all()
+    serializer_class = CardSerializer
 
 def process(request):
     cards = Cards.objects.all()

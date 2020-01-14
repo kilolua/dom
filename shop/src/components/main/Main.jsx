@@ -14,6 +14,7 @@ class Main extends React.Component {
 
     onChangeTags = (value)=>{
         this.setState({tags:value})
+        console.log('tags', this.state.tags)
     }
 
     render() {
