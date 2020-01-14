@@ -20,9 +20,10 @@ export default class Cards extends React.Component{
                 console.log('data', data)
                 this.setState({cards: data})
             }
-            console.log(data);
+            //console.log(data);
         })
     }
+
     componentDidMount() {
         this._interval = setInterval(() => {
             this.refreshData()
@@ -34,13 +35,19 @@ export default class Cards extends React.Component{
 
 
         render() {
-            let modalClose = () => this.setState({ showAddCard: false });
+            let modalClose = () => this.setState({showAddCard: false});
             return(
             <div>
                 <Button onClick={()=>this.setState({showAddCard:true})}>Добавить задание</Button>
-                {this.state.cards.map(card => (
-                    <CardItem data={card}/>
-                ))}
+
+                {/*{this.state.cards.filter(card=>{
+                    console.log('tags',this.props.filters)
+                    return this.props.filters[card['tag']] && (<CardItem data={card}/>)
+                })}*/}
+                {this.state.cards.map(card=>{
+                    return this.props.filters[card['tag']] && (<CardItem data={card}/>)
+                    }
+                )}
                 <AddCard
                     show={this.state.showAddCard}
                     onHide={modalClose}

@@ -8,13 +8,19 @@ class Main extends React.Component {
     constructor() {
         super();
         this.state = {
-            tags:{},
+            tags:{
+                products:true,
+                animals:true,
+                furniture:true,
+                job:true,
+                household:true,
+            },
         }
     }
 
     onChangeTags = (value)=>{
         this.setState({tags:value})
-        console.log('tags', this.state.tags)
+        //console.log('tags', this.state.tags)
     }
 
     render() {
@@ -24,12 +30,10 @@ class Main extends React.Component {
                 <Container>
                     <Row >
                         <Col sm={2}><LeftMenu updateTags={this.onChangeTags} /></Col>
-                        <Col sm={10}><Cards/></Col>
+                        <Col sm={10}><Cards filters={this.state.tags}/></Col>
                     </Row>
                 </Container>
             </div>
-
-
             // Main Component
         )
     }

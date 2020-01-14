@@ -5,13 +5,20 @@ export default class LeftMenu extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            products:false,
-            animals:false,
-            furniture:false,
-            job:false,
-            household:false,
+            products:true,
+            animals:true,
+            furniture:true,
+            job:true,
+            household:true,
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    componentDidMount() {
+        this._interval = setInterval(() => {
+            this.props.updateTags(this.state)
+        }, 1000);
+
     }
 
     handleInputChange(event) {
@@ -22,7 +29,6 @@ export default class LeftMenu extends React.Component{
         this.setState({
             [name]: value
         });
-        this.props.updateTags(this.state)
         //console.log(value)
     }
 
